@@ -3,6 +3,7 @@
 //is to return information about that. Value can be type string or number. reverseValue():  If number do (*(-1)), if string reverse it.  
 //Closure pattern.
 
+
 let iife = (function () {
     let var1 = "Lubie jesc";
     let setValue = function () {
@@ -32,7 +33,6 @@ let iife = (function () {
 console.log(iife);
 console.log(iife.setInnerData());
 console.log(iife.showInnerData());
-console.log(iife.reverseInnerData());
 
 
 //  Create four function definitions. One for every basic math operations and taking two input parameters. 
@@ -41,10 +41,31 @@ console.log(iife.reverseInnerData());
 // and a function field that points to a function with math operation (defined at the beginning). 
 // A function setOperation() that sets the field from previous sentence and a calculate() function that makes calculation and returns its value. 
 
+let add = (a, b) => a + b;
+let substract = (a, b) => a - b;
+let multiply = (a, b) => a * b;
+let divide = (a, b) => a / b;
 
+function chooseOperation(x, y) {
 
+    return {
 
+        x: x,
+        y: y,
+        operationToDo: add,
 
+        setOperation(operation) {
+            this.operationToDo = operation;
+        },
+        calculate() {
+            return this.operationToDo(x, y);
+        },
+    };
+}
+
+let myOperation = chooseOperation(2, 7);
+myOperation.setOperation(multiply);
+console.log(myOperation.calculate());
 
 // 3) Create an array (by hand) of objects and call sum() function in context of each one of them. 
 //Sum function is to come from this object  BaseObject = { X,y, sum: function (){ return this.x+this.y}} 
@@ -83,3 +104,4 @@ for (let i = 0; i < myArr.length; i++) {
 
 }
 
+console.log(iife.reverseInnerData());
